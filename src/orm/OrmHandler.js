@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const libFsp = require('fs-promise');
-const libPath = require('path');
+const libFsp = require("fs-promise");
+const libPath = require("path");
 const Waterline = require("waterline");
-const joi = require('joi');
+const joi = require("joi");
 const joiValidate = require('../utility/JoiValidate');
 class OrmHandler {
     constructor() {

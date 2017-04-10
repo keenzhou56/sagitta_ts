@@ -1,10 +1,10 @@
 "use strict";
 
-const libPath     = require('path');
+import * as libPath from 'path';
 
 const handlebars  = require('handlebars');
 
-const joi         = require('joi');
+import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 
 class Handlebars {

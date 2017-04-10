@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const WinstonTFile = require('winston').transports.File;
 const WinstonTConsole = require('winston').transports.Console;
 const WinstonLogger = require('winston').Logger;
-const joi = require('joi');
+const joi = require("joi");
 const joiValidate = require('../utility/JoiValidate');
 // enum Levels { error = 0, warn = 1, notice = 2, info = 3, debug = 4, verbose = 5};
 class Logger {

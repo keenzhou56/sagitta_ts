@@ -1,14 +1,14 @@
 "use strict";
 
-const libFsp  = require('fs-promise');
-const libPath = require('path');
+import * as libFsp from 'fs-promise';
+import * as libPath from 'path';
 
 import * as Waterline from "waterline";
 interface Validated extends Waterline.Config{
   path: string;
 }
 
-const joi         = require('joi');
+import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 
 

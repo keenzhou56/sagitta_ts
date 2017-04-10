@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const joi = require('joi');
+const joi = require("joi");
 const joiValidate = require('../utility/JoiValidate');
-const libPath = require('path');
-const libFsp = require('fs-promise');
-const libUtil = require('util');
+const libPath = require("path");
+const libFsp = require("fs-promise");
+const libUtil = require("util");
 class Config {
     constructor() {
         this.schema = joi.object().keys({

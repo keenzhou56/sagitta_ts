@@ -1,12 +1,12 @@
 "use strict";
 // import * as Router from "koa-router";
 
-const libPath = require('path');
-const libFsp  = require('fs-promise');
+import * as libPath from 'path';
+import * as libFsp from 'fs-promise';
 
 const Router = require('koa-router');
 // import * as Router from '@types/koa-router';
-const joi         = require('joi');
+import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 
 class RouterLoader {

@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const libPath = require('path');
 const handlebars = require('handlebars');
-const joi = require('joi');
+const joi = require("joi");
 const joiValidate = require('../utility/JoiValidate');
 class Handlebars {
     constructor() {

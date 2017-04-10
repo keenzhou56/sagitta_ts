@@ -1,11 +1,11 @@
 "use strict";
 
-const joi         = require('joi');
+import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 
-const libPath = require('path');
-const libFsp  = require('fs-promise');
-const libUtil = require('util');
+import * as libPath from 'path';
+import * as libFsp from 'fs-promise';
+import * as libUtil from 'util';
 
 class Config {
   schema: {[key:string]: any};
@@ -71,7 +71,7 @@ class Config {
       });
 
       // read & parse file
-      libFsp.readFile(filePath).then((content: string) => {
+      libFsp.readFile(filePath).then((content: any) => {
         try {
           let jsonData = JSON.parse(content);
           this.cache[fileName] = jsonData;
