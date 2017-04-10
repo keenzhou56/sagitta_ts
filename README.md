@@ -20,3 +20,5 @@ koa context里的reqId
 
 客户端脚本在调用patch方法的时候除了按规定的scheme传递参数外，还可以传递id和一个json的数据进行部分更新
 clientJs.patchComment(id, jsonData)
+
+add src_ts tsconfig.json
