@@ -16,7 +16,7 @@ class Logger {
   instance: any;
   initialized: boolean;
   levels: {[key:string]: number};
-  colors: {[key:string]: any};
+  colors: {[key:string]: string};
   schema: joi.ObjectSchema;
   constructor() {
     this.conf = {};
