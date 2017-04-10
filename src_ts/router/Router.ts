@@ -1,21 +1,19 @@
 "use strict";
-// import * as Router from "koa-router";
 
 import * as libPath from 'path';
 import * as libFsp from 'fs-promise';
 
-const Router = require('koa-router');
-// import * as Router from '@types/koa-router';
+import * as Router from 'koa-router';
 import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 
 class RouterLoader {
   instance: any;
   unless: any;
-  schema: any;
-  subSchema: any;
+  schema:  joi.ArraySchema;
+  subSchema:  joi.ObjectSchema;
   constructor() {
-    // this.instance = new Router();
+    this.instance = null;
     this.unless = [];
     this.schema = joi.array().min(1).required();
     this.subSchema = joi.object().keys({

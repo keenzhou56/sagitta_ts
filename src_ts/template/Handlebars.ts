@@ -9,7 +9,7 @@ const joiValidate = require('../utility/JoiValidate');
 
 class Handlebars {
   cache: any;
-  schema: any;
+  schema: joi.ObjectSchema;
   constructor() {
     this.cache = {};
 

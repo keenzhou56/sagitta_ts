@@ -8,7 +8,7 @@ import * as libFsp from 'fs-promise';
 import * as libUtil from 'util';
 
 class Config {
-  schema: {[key:string]: any};
+  schema: joi.ObjectSchema;
   cache: {[key:string]: any};
   path: string;
   suffix: string;

@@ -16,7 +16,7 @@ const joiValidate = require('../utility/JoiValidate');
 class OrmHandler {
   waterline: Waterline.Waterline;
   collections: any;
-  schema: {[key:string]: any};
+  schema: joi.ObjectSchema;
   constructor() {
     this.waterline = new Waterline();
     this.collections = {};

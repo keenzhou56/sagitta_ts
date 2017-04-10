@@ -1,8 +1,10 @@
 "use strict";
 
-const WinstonTFile    = require('winston').transports.File;
-const WinstonTConsole = require('winston').transports.Console;
-const WinstonLogger   = require('winston').Logger;
+import * as winston from 'winston';
+const WinstonTFile    = winston.transports.File;
+const WinstonTConsole = winston.transports.Console;
+const WinstonLogger   = winston.Logger;
+
 
 import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
@@ -15,7 +17,7 @@ class Logger {
   initialized: boolean;
   levels: {[key:string]: number};
   colors: {[key:string]: any};
-  schema: {[key:string]: any};
+  schema: joi.ObjectSchema;
   constructor() {
     this.conf = {};
     this.instance = null;

@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const libFsp = require('fs-promise');
-const libPath = require('path');
-const joi = require('joi');
+const libFsp = require("fs-promise");
+const libPath = require("path");
+const joi = require("joi");
 const joiValidate = require('./utility/JoiValidate');
 const debug = require('debug')('sagitta');
 const Cache_1 = require("./cache/Cache");

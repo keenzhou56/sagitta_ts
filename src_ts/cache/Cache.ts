@@ -1,13 +1,13 @@
 "use strict";
 
 const Redis = require('ioredis');
-
-const joi         = require('joi');
+import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
-const msgpack     = require('msgpack-lite');
+import * as msgpack from 'msgpack-lite';
+
 class Cache {
   instance: any;
-  schema: {[key:string]: any};
+  schema: joi.ObjectSchema;
   variance: number;
   expires: number;
   constructor() {

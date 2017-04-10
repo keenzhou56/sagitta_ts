@@ -1,15 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// import * as Router from "koa-router";
 const libPath = require("path");
 const libFsp = require("fs-promise");
-const Router = require('koa-router');
-// import * as Router from '@types/koa-router';
+const Router = require("koa-router");
 const joi = require("joi");
 const joiValidate = require('../utility/JoiValidate');
 class RouterLoader {
     constructor() {
-        // this.instance = new Router();
+        this.instance = null;
         this.unless = [];
         this.schema = joi.array().min(1).required();
         this.subSchema = joi.object().keys({

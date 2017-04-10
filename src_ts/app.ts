@@ -1,9 +1,9 @@
 "use strict";
 
-const libFsp  = require('fs-promise');
-const libPath = require('path');
+import * as libFsp from 'fs-promise';
+import * as libPath from 'path';
 
-const joi         = require('joi');
+import * as joi from 'joi';
 const joiValidate = require('./utility/JoiValidate');
 const debug       = require('debug')('sagitta');
 
@@ -49,7 +49,7 @@ class App {
     this.conf = conf;
 
     // schema definition
-    let confSchema = joi.object().keys({
+    let confSchema: any = joi.object().keys({
       cache:    this.cache.schema,
       config:   this.config.schema,
       logger:   this.logger.schema,
