@@ -59,8 +59,7 @@ class RouterLoader {
               _this.unless.push(pattern);
             }
           }
-        }).catch((err: any) => {
-          console.log(err);
+        }).catch((err: Error) => {
           reject(err)
         });
       }

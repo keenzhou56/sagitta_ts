@@ -29,7 +29,7 @@ class Cache {
       joiValidate(conf, this.schema).then((validated: any) => {
         this.instance = new Redis(validated);
         resolve();
-      }).catch((err:any) => reject(err));
+      }).catch((err: Error) => reject(err));
     });
   }
 
@@ -58,7 +58,7 @@ class Cache {
             data = msgpack.decode(data);
         }
         resolve(data);
-      }).catch((err: any) => {
+      }).catch((err: Error) => {
         reject(err);
       });
     });

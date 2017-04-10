@@ -46,7 +46,7 @@ class OrmModel {
         }
       }).then((data: any) => {
         resolve(data);
-      }).catch((err: any) => {
+      }).catch((err: Error) => {
         reject(err);
       });
     });
@@ -78,7 +78,7 @@ class OrmModel {
   static removeCacheAfterRecordChanged(name: string, cacheKey: string, data: any, next: any) {
     cache.removeModelHash(name, OrmModel.getValByKey(cacheKey, data))
       .then((_: any) => next())
-      .catch((err: any) => {
+      .catch((err: Error) => {
         logger.error(err);
         next();
       });

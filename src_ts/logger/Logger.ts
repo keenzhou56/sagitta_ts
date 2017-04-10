@@ -69,7 +69,7 @@ class Logger {
 
         this.initialized = true;
         resolve();
-      }).catch((err: any) => reject(err));
+      }).catch((err: Error) => reject(err));
     });
   }
 

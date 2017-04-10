@@ -36,7 +36,7 @@ class Config {
         this.path   = validated.path;
         this.suffix = validated.suffix;
         resolve();
-      }).catch((err: any) => reject(err));
+      }).catch((err: Error) => reject(err));
     });
   }
 
@@ -79,7 +79,7 @@ class Config {
         } catch (err) {
           reject(err);
         }
-      }).catch((err: any) => {
+      }).catch((err: Error) => {
         reject(err);
       });
     
