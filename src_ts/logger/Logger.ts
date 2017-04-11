@@ -10,8 +10,9 @@ import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 
 // enum Levels { error = 0, warn = 1, notice = 2, info = 3, debug = 4, verbose = 5};
+import {LoggerInterface} from './interface';
 
-class Logger {
+export class Logger implements LoggerInterface {
   conf: {[key:string]: any};
   instance: any;
   initialized: boolean;
@@ -122,6 +123,3 @@ class Logger {
 }
 
 export const loggerInstance = new Logger();
-export interface loggerInstanceType extends Logger{}
-// exports.loggerInstance = new Logger();
-// module.exports = logger;

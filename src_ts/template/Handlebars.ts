@@ -7,7 +7,12 @@ const handlebars  = require('handlebars');
 import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 
-class Handlebars {
+export interface HandlebarsInterface {
+  cache: any;
+  schema: joi.ObjectSchema;
+}
+
+export class Handlebars implements HandlebarsInterface {
   cache: any;
   schema: joi.ObjectSchema;
   constructor() {
@@ -27,5 +32,3 @@ class Handlebars {
 }
 
 export const templateInstance = new Handlebars();
-export interface templateInstanceType extends Handlebars {}
-// module.exports = hbs;

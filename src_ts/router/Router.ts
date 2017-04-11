@@ -7,7 +7,14 @@ import * as Router from 'koa-router';
 import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 
-class RouterLoader {
+export interface RouterLoaderInterface {
+  instance: any;
+  unless: any;
+  schema:  joi.ArraySchema;
+  subSchema:  joi.ObjectSchema;
+}
+
+export class RouterLoader implements RouterLoaderInterface{
   instance: any;
   unless: any;
   schema:  joi.ArraySchema;
@@ -74,5 +81,4 @@ class RouterLoader {
 }
 
 export const routerInstance = new RouterLoader();
-export interface routerInstanceType extends RouterLoader {}
 

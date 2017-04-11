@@ -74,5 +74,6 @@ class Cache {
         return Math.random() * (max - min) + min;
     }
 }
+exports.Cache = Cache;
 exports.cacheInstance = new Cache();
 //# sourceMappingURL=Cache.js.map

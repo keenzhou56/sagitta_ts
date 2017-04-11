@@ -6,7 +6,6 @@ const WinstonTConsole = winston.transports.Console;
 const WinstonLogger = winston.Logger;
 const joi = require("joi");
 const joiValidate = require('../utility/JoiValidate');
-// enum Levels { error = 0, warn = 1, notice = 2, info = 3, debug = 4, verbose = 5};
 class Logger {
     constructor() {
         this.conf = {};
@@ -96,7 +95,6 @@ class Logger {
         this.instance[level].apply(this.instance, args);
     }
 }
+exports.Logger = Logger;
 exports.loggerInstance = new Logger();
-// exports.loggerInstance = new Logger();
-// module.exports = logger; 
 //# sourceMappingURL=Logger.js.map

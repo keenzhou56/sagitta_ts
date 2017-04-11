@@ -7,12 +7,12 @@ import * as joi from 'joi';
 const joiValidate = require('./utility/JoiValidate');
 const debug       = require('debug')('sagitta');
 
-import {cacheInstanceType, cacheInstance} from './cache/Cache';
-import {configType, configInstance} from './config/Config';
-import {loggerInstanceType,loggerInstance} from './logger/Logger';
-import {ormInstanceType, ormInstance} from './orm/OrmHandler';
-import {routerInstanceType, routerInstance} from './router/Router';
-import {templateInstanceType, templateInstance} from './template/Handlebars';
+import {Cache, cacheInstance} from './cache/Cache';
+import {Config, configInstance} from './config/Config';
+import {Logger,loggerInstance} from './logger/Logger';
+import {OrmHandler, ormInstance} from './orm/OrmHandler';
+import {RouterLoader as Router, routerInstance} from './router/Router';
+import {Handlebars as Template, templateInstance} from './template/Handlebars';
 
 import * as koa from "koa";
 const koaServe        = require('koa-static');
@@ -31,12 +31,12 @@ const koaJWTHandler           = require('./middleware/JWTHandler');
 class App {
 
   constructor(
-      public cache:    cacheInstanceType,
-      public config:   configType,
-      public logger:   loggerInstanceType,
-      public orm:      ormInstanceType,
-      public router:   routerInstanceType,
-      public template: templateInstanceType,
+      public cache:    Cache,
+      public config:   Config,
+      public logger:   Logger,
+      public orm:      OrmHandler,
+      public router:   Router,
+      public template: Template,
       public app:      koa,
       public conf:     {[key:string]: any},
       public initialized: boolean

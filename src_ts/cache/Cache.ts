@@ -4,8 +4,9 @@ const Redis = require('ioredis');
 import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 import * as msgpack from 'msgpack-lite';
+import {CacheInterface} from './interface';
 
-class Cache {
+export class Cache implements CacheInterface {
   instance: any;
   schema: joi.ObjectSchema;
   variance: number;
@@ -93,4 +94,3 @@ class Cache {
 }
 
 export const cacheInstance = new Cache()
-export interface cacheInstanceType extends Cache{}

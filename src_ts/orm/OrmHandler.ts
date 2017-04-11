@@ -11,9 +11,13 @@ interface Validated extends Waterline.Config{
 import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 
+export interface OrmHandlerInterface {
+  waterline: Waterline.Waterline;
+  collections: any;
+  schema: joi.ObjectSchema;
+}
 
-
-class OrmHandler {
+export class OrmHandler implements OrmHandlerInterface {
   waterline: Waterline.Waterline;
   collections: any;
   schema: joi.ObjectSchema;
@@ -72,5 +76,3 @@ class OrmHandler {
 }
 
 export const ormInstance = new OrmHandler();
-export interface ormInstanceType extends OrmHandler {};
-// module.exports = orm;

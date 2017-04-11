@@ -14,6 +14,6 @@ class Handlebars {
     render(fileName, args) {
     }
 }
+exports.Handlebars = Handlebars;
 exports.templateInstance = new Handlebars();
-// module.exports = hbs; 
 //# sourceMappingURL=Handlebars.js.map

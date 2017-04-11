@@ -75,6 +75,6 @@ class Config {
         });
     }
 }
-;
+exports.Config = Config;
 exports.configInstance = new Config();
 //# sourceMappingURL=Config.js.map

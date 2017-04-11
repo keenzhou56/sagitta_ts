@@ -64,5 +64,6 @@ class RouterLoader {
         };
     }
 }
+exports.RouterLoader = RouterLoader;
 exports.routerInstance = new RouterLoader();
 //# sourceMappingURL=Router.js.map

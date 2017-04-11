@@ -58,7 +58,6 @@ class OrmHandler {
         }
     }
 }
+exports.OrmHandler = OrmHandler;
 exports.ormInstance = new OrmHandler();
-;
-// module.exports = orm; 
 //# sourceMappingURL=OrmHandler.js.map

@@ -6,8 +6,9 @@ const joiValidate = require('../utility/JoiValidate');
 import * as libPath from 'path';
 import * as libFsp from 'fs-promise';
 import * as libUtil from 'util';
+import {ConfigInterface} from './interface';
 
-class Config {
+export class Config implements ConfigInterface {
   schema: joi.ObjectSchema;
   cache: {[key:string]: any};
   path: string;
@@ -87,6 +88,6 @@ class Config {
   }
 
 }
-export interface configType extends Config{};
+
 export const configInstance = new Config();
 
