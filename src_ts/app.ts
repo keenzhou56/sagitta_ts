@@ -43,7 +43,7 @@ class App {
   ) {
   }
 
-  init(conf: any) {
+  public init(conf: any): Promise<any> {
     debug('[Sagitta] Start to initialize app ...');
 
     this.conf = conf;
@@ -99,7 +99,7 @@ class App {
     });
   }
 
-  initialize() {
+  public initialize(): Promise<any> {
     return new Promise((resolve, reject) => {
       const _this = this;
       const _app  = _this.app;
@@ -193,7 +193,7 @@ class App {
     });
   }
 
-  start() {
+  public start(): void {
     const _this = this;
     const _app  = _this.app;
     const _conf = _this.conf;
