@@ -6,6 +6,7 @@ const WinstonTConsole = winston.transports.Console;
 const WinstonLogger = winston.Logger;
 const joi = require("joi");
 const joiValidate = require('../utility/JoiValidate');
+// enum Levels { error = 0, warn = 1, notice = 2, info = 3, debug = 4, verbose = 5};
 class Logger {
     constructor() {
         this.conf = {};

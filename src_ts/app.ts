@@ -15,8 +15,8 @@ import {RouterLoader as Router, routerInstance} from './router/Router';
 import {Handlebars as Template, templateInstance} from './template/Handlebars';
 
 import * as koa from "koa";
-const koaServe        = require('koa-static');
-const koaBodyParser   = require('koa-bodyparser');
+import * as koaServe from 'koa-static';
+import * as koaBodyParser from 'koa-bodyparser';
 const koaQueryString  = require('koa-qs');
 const koaCors         = require('koa-cors');
 
@@ -131,7 +131,7 @@ class App {
           }
 
           _app.use(_conf.app.errorHandle);                 // error handle
-          _app.use(koaServe(_conf.app.staticPath, {maxAge: _conf.app.maxAge || 0}));        // static files serving
+          _app.use(koaServe(_conf.app.staticPath, {maxage: _conf.app.maxAge || 0}));        // static files serving
           _app.use(koaMidRequestIdHandler.register());     // add request id in app
           _app.use(koaMidRequestTimer.register());         // request timer
           _app.use(koaBodyParser({ formLimit: _conf.app.formLimit + 'kb'}));  // post body parser

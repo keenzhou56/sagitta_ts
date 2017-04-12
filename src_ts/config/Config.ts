@@ -6,14 +6,14 @@ const joiValidate = require('../utility/JoiValidate');
 import * as libPath from 'path';
 import * as libFsp from 'fs-promise';
 import * as libUtil from 'util';
-import {ConfigInterface} from './interface';
 
-export class Config implements ConfigInterface {
-  schema: joi.ObjectSchema;
-  cache: {[key:string]: any};
-  path: string;
-  suffix: string;
-  constructor() {
+export class Config {
+  public schema: joi.ObjectSchema;
+  private cache: {[key:string]: any};
+  private path: string;
+  private suffix: string;
+
+  public constructor() {
     this.schema = joi.object().keys({
       path:   joi.string().required(),
       suffix: joi.string().optional().default('.json')
@@ -22,7 +22,7 @@ export class Config implements ConfigInterface {
     this.cache = {};
   }
 
-  initialize(conf: any) {
+  public initialize(conf: any): Promise<any> {
     let validated = {path: "", suffix: ""};
     return new Promise((resolve, reject) => {
       joiValidate(conf, this.schema).then((_: any) => {
@@ -41,7 +41,7 @@ export class Config implements ConfigInterface {
     });
   }
 
-  loadKey(fileName: string, key: string, path: string) {
+  private loadKey(fileName: string, key: string, path: string): void {
     let pathValidated = path || this.path; // optional
 
     this.loadJson(fileName, pathValidated).then((conf: any) => {
@@ -55,7 +55,7 @@ export class Config implements ConfigInterface {
     })
   }
 
-  loadJson(fileName: string, path: string) {
+  private loadJson(fileName: string, path: string): Promise<any> {
     let pathValidated = path || this.path; // optional
     return new Promise((resolve, reject) => {
       // exists in cache

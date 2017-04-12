@@ -10,16 +10,17 @@ import * as joi from 'joi';
 const joiValidate = require('../utility/JoiValidate');
 
 // enum Levels { error = 0, warn = 1, notice = 2, info = 3, debug = 4, verbose = 5};
-import {LoggerInterface} from './interface';
 
-export class Logger implements LoggerInterface {
-  conf: {[key:string]: any};
-  instance: any;
-  initialized: boolean;
-  levels: {[key:string]: number};
-  colors: {[key:string]: string};
-  schema: joi.ObjectSchema;
-  constructor() {
+export class Logger {
+
+  private conf: {[key:string]: any};
+  private instance: any;
+  private initialized: boolean;
+  private levels: {[key:string]: number};
+  private colors: {[key:string]: string};
+  public schema: joi.ObjectSchema;
+
+  public constructor() {
     this.conf = {};
     this.instance = null;
     this.initialized = false;
@@ -38,7 +39,7 @@ export class Logger implements LoggerInterface {
     });
   }
 
-  initialize(conf: any) {
+  public initialize(conf: any): Promise<any> {
     return new Promise((resolve, reject) => {
       joiValidate(conf, this.schema).then((_: any) => {
         this.conf = _;
@@ -76,27 +77,27 @@ export class Logger implements LoggerInterface {
     });
   }
 
-  error(...errMsg: any[]) {
+  public error(...errMsg: any[]): void {
     this.doLog('error', arguments);
   }
 
-  warn(...errMsg: any[]) {
+  public warn(...errMsg: any[]): void {
     this.doLog('warn', arguments);
   }
 
-  notice() {
+  public notice(): void {
     this.doLog('notice', arguments);
   }
 
-  info(...errMsg: any[]) {
+  public info(...errMsg: any[]): void {
     this.doLog('info', arguments);
   }
 
-  debug() {
+  public debug(): void {
     this.doLog('debug', arguments);
   }
 
-  verbose() {
+  public verbose(): void {
     this.doLog('verbose', arguments);
   }
 
@@ -107,7 +108,7 @@ export class Logger implements LoggerInterface {
    *
    * e.g logger.verbose(this.reqId, 'verbose');
    */
-  doLog(level: string, parentArgs: any) {
+  private doLog(level: string, parentArgs: any): void {
     if (!this.initialized) {
       return; // no instance to log
     }

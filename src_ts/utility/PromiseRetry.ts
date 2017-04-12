@@ -1,8 +1,8 @@
 "use strict";
 
-let retry = function(fn, context, args, retryLeft) {
+let retry = function(fn: any, context: any, args: any, retryLeft: any) {
   retryLeft = retryLeft || 3;
-  return fn.apply(context, args).catch((err) => {
+  return fn.apply(context, args).catch((err: Error) => {
     // logger.warn('[PromiseRetry][%s] Fn "%s" failed with %s, retry left: %d', process.pid, fn.name, err.message, retryLeft);
     if (retryLeft <= 0) {
       // logger.error('[PromiseRetry][%s] Fn "%s" failed with %s, no retry left', process.pid, fn.name, err.message);

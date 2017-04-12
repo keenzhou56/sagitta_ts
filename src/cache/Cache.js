@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Redis = require('ioredis');
+const Redis = require("ioredis");
 const joi = require("joi");
 const joiValidate = require('../utility/JoiValidate');
 const msgpack = require("msgpack-lite");

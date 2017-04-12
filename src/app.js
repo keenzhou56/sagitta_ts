@@ -12,8 +12,8 @@ const OrmHandler_1 = require("./orm/OrmHandler");
 const Router_1 = require("./router/Router");
 const Handlebars_1 = require("./template/Handlebars");
 const koa = require("koa");
-const koaServe = require('koa-static');
-const koaBodyParser = require('koa-bodyparser');
+const koaServe = require("koa-static");
+const koaBodyParser = require("koa-bodyparser");
 const koaQueryString = require('koa-qs');
 const koaCors = require('koa-cors');
 const koaMidNotFoundHandler = require('./middleware/NotFoundHandler');
@@ -114,7 +114,7 @@ class App {
                     _app.use(koaCompressHandler.register(_conf.app.compressOpt));
                 }
                 _app.use(_conf.app.errorHandle); // error handle
-                _app.use(koaServe(_conf.app.staticPath, { maxAge: _conf.app.maxAge || 0 })); // static files serving
+                _app.use(koaServe(_conf.app.staticPath, { maxage: _conf.app.maxAge || 0 })); // static files serving
                 _app.use(koaMidRequestIdHandler.register()); // add request id in app
                 _app.use(koaMidRequestTimer.register()); // request timer
                 _app.use(koaBodyParser({ formLimit: _conf.app.formLimit + 'kb' })); // post body parser

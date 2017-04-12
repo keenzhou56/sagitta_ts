@@ -17,11 +17,11 @@ export interface OrmHandlerInterface {
   schema: joi.ObjectSchema;
 }
 
-export class OrmHandler implements OrmHandlerInterface {
-  waterline: Waterline.Waterline;
-  collections: any;
-  schema: joi.ObjectSchema;
-  constructor() {
+export class OrmHandler {
+  private waterline: Waterline.Waterline;
+  private collections: any;
+  public schema: joi.ObjectSchema;
+  public constructor() {
     this.waterline = new Waterline();
     this.collections = {};
 
@@ -32,7 +32,7 @@ export class OrmHandler implements OrmHandlerInterface {
     });
   }
 
-  initialize(conf: any) {
+  public initialize(conf: any): Promise<any> {
     let validated: Validated;
     return new Promise((resolve, reject) => {
       joiValidate(conf, this.schema).then((_: Validated) => {
@@ -65,7 +65,7 @@ export class OrmHandler implements OrmHandlerInterface {
     });
   }
 
-  getWaterlineModel(modelName: string) {
+  public getWaterlineModel(modelName: string): any {
     if (this.collections.hasOwnProperty(modelName)) {
       return this.collections[modelName];
     } else {

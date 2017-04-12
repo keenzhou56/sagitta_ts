@@ -12,20 +12,20 @@ export interface HandlebarsInterface {
   schema: joi.ObjectSchema;
 }
 
-export class Handlebars implements HandlebarsInterface {
-  cache: any;
-  schema: joi.ObjectSchema;
-  constructor() {
+export class Handlebars {
+  private cache: any;
+  public schema: joi.ObjectSchema;
+  public constructor() {
     this.cache = {};
 
     this.schema = joi.object().keys({}).optional();
   }
 
-  initialize(conf: any) {
+  public initialize(conf: any): Promise<void> {
     return Promise.resolve();
   }
 
-  render(fileName: string, args: any) {
+  public render(fileName: string, args: any): void {
 
   }
 

@@ -3,22 +3,23 @@
 import {ormInstance as orm} from './OrmHandler';
 import {cacheInstance as cache} from '../cache/Cache';
 import {loggerInstance as logger} from '../logger/Logger';
+import * as joi from 'joi';
 
 class OrmModel {
-  name: string;
-  cacheKey: string;
-  schema: any;
-  constructor() {
+  private name: string;
+  private cacheKey: string;
+  private schema: any;
+  public constructor() {
     this.name         = '';   // model name
     this.cacheKey     = '';   // model identity attribute name
     this.schema       = {};   // waterline model definition schema object
   }
 
-  get instance() {
+  public get instance() {
     return orm.getWaterlineModel(this.name);
   }
 
-  register() {
+  public register(): any {
     this.checkAfterChangeEventDefinition('afterCreate');
     this.checkAfterChangeEventDefinition('afterUpdate');
     this.checkAfterChangeEventDefinition('afterDestroy');
@@ -26,7 +27,7 @@ class OrmModel {
     return this.schema;
   }
 
-  find(identity: any, query: any) {
+  public find(identity: any, query: any): Promise<any> {
     let cacheHit = false;
     let queryString = JSON.stringify(query);
 
@@ -52,7 +53,7 @@ class OrmModel {
     });
   }
 
-  getCacheKeyVal(values: any) {
+  public getCacheKeyVal(values: any): any {
     if (Array.isArray(values)) {
       return values[0][this.cacheKey];
     } else {
@@ -60,7 +61,7 @@ class OrmModel {
     }
   }
 
-  static getValByKey(key: string, values: any) {
+  public static getValByKey(key: string, values: any): any {
     if (Array.isArray(values)) {
       return values[0][key];
     } else {
@@ -68,14 +69,14 @@ class OrmModel {
     }
   }
 
-  checkAfterChangeEventDefinition(eventName: string) {
+  public checkAfterChangeEventDefinition(eventName: string): void {
     if (!this.schema.hasOwnProperty(eventName)) {
       let me: any = this;
       this.schema[eventName] = me[eventName];
     }
   }
 
-  static removeCacheAfterRecordChanged(name: string, cacheKey: string, data: any, next: any) {
+  public static removeCacheAfterRecordChanged(name: string, cacheKey: string, data: any, next: any): void {
     cache.removeModelHash(name, OrmModel.getValByKey(cacheKey, data))
       .then((_: any) => next())
       .catch((err: Error) => {
