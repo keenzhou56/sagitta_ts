@@ -174,9 +174,8 @@ module.exports = {{{schema}}};
 `;
 
 const TemplateHead = `"use strict";
-let apiHost = (__UNLOCK_API_HOST__ == 'true')
-  ? require('../src/common/Configs').Server.API_HOST
-  : '{{{apiHost}}}';
+import Configs from "../../common/Configs";
+let apiHost = Configs.DEFAULT.SERVER.API_HOST;
 
 class SagittaClient {
 
