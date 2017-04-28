@@ -114,10 +114,19 @@ class ApiGenerator {
     if (!secret) {
       this.throw(500, 'Invalid secret!');
     }
-
-    if (require('sagitta').Utility.JWT.verify(token, secret) === false) {
+    
+    let decodeToken = require('sagitta').Utility.JWT.verify(token, secret);
+    if (decodeToken === false) {
       this.throw(401, "Invalid token!");
     }
+    
+    if ((this.params.userId !== undefined && decodeToken.userId != this.params.userId)
+      || (this.request.body.userId !== undefined && decodeToken.userId != this.request.body.userId)) {
+      this.throw(401 , 'No Authorization userId:' + decodeToken.userId + "!");
+    }
+    
+    this.jwtData = decodeToken;
+  
   }
         `
         : '';
